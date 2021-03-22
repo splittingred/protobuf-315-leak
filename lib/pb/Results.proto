@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+// Demonstration service
+service Results {
+    rpc GetResult(GetResultReq) returns (GetResultResp) {}
+}
+
+message GetResultReq {}
+
+message GetResultResp {}
