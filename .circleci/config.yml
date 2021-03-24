@@ -49,6 +49,14 @@ commands:
     steps:
       - add_ssh_keys
       - checkout
+  install-bundler:
+    steps:
+      - run:
+          name: "Install bundler 1.17.3"
+          command: |
+            echo 'export BUNDLER_VERSION=1.17.3' >> $BASH_ENV
+            source $BASH_ENV
+            gem install bundler:1.17.3
   benchmark:
     steps:
       - run: ./run.sh
@@ -62,6 +70,7 @@ jobs:
         default: "ruby_2_6"
     steps:
       - pre-setup
+      - install-bundler
       - benchmark
 
 workflows:

@@ -1,6 +1,8 @@
 
 ## Google Protobuf 3.15 Memory Leak
 
+[![CircleCI](https://circleci.com/gh/splittingred/protobuf-315-leak/tree/main.svg?style=svg)](https://circleci.com/gh/splittingred/protobuf-315-leak/tree/main)
+
 This repository illustrates a memory leak in the google-protobuf 3.15 gem when used in gRPC.
 
 ## How to Run
