@@ -5,6 +5,8 @@
 
 This repository illustrates a memory leak in the google-protobuf 3.15 gem when used in gRPC.
 
+See https://github.com/protocolbuffers/protobuf/issues/8421
+
 ## How to Run
 
 Run: `./run.sh`
