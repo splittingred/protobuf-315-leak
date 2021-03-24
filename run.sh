@@ -12,9 +12,11 @@ info() {
     echo -e "$info$1$no_color"
 }
 
+ok "On Ruby version: $(ruby -v)"
+ok "------------------------------------"
 ok "Running Protobuf 3.14 test"
+info "------------------------------------"
 export BUNDLE_GEMFILE=Gemfile
-info "------------------"
 info "Installing gems..."
 bundle update
 
@@ -28,9 +30,10 @@ sleep 1
 info "Beginning benchmark..."
 ruby lib/benchmark.rb
 
+info "------------------------------------"
 ok "Running Protobuf 3.15 test"
+info "------------------------------------"
 export BUNDLE_GEMFILE=Gemfile.3_15
-info "------------------"
 info "Installing gems..."
 bundle update
 
