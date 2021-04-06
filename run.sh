@@ -31,9 +31,26 @@ info "Beginning benchmark..."
 ruby lib/benchmark.rb
 
 info "------------------------------------"
-ok "Running Protobuf 3.15 test"
+ok "Running Protobuf 3.15.6 test"
 info "------------------------------------"
-export BUNDLE_GEMFILE=Gemfile.3_15
+export BUNDLE_GEMFILE=Gemfile.3_15_6
+info "Installing gems..."
+bundle update
+
+info "Starting grpc server..."
+ruby lib/server.rb &
+server_1_pid=$!
+
+info "Letting server boot..."
+sleep 1
+
+info "Beginning benchmark..."
+ruby lib/benchmark.rb
+
+info "------------------------------------"
+ok "Running Protobuf 3.15.7 test"
+info "------------------------------------"
+export BUNDLE_GEMFILE=Gemfile.3_15_7
 info "Installing gems..."
 bundle update
 
