@@ -2,7 +2,7 @@
 
 set -o errexit
 green='\033[0;32m'
-info='\033[0;30m'
+info='\033[0;28m'
 no_color='\033[0m'
 
 ok() {
@@ -28,24 +28,12 @@ info "Letting server boot..."
 sleep 1
 
 info "Beginning benchmark..."
+info "10,000 Requests:"
 ruby lib/benchmark.rb
-
-info "------------------------------------"
-ok "Running Protobuf 3.15.6 test"
-info "------------------------------------"
-export BUNDLE_GEMFILE=Gemfile.3_15_6
-info "Installing gems..."
-bundle update
-
-info "Starting grpc server..."
-ruby lib/server.rb &
-server_1_pid=$!
-
-info "Letting server boot..."
-sleep 1
-
-info "Beginning benchmark..."
-ruby lib/benchmark.rb
+info "20,000 Requests:"
+CLIENT_CALLS=20000 ruby lib/benchmark.rb
+info "40,000 Requests:"
+CLIENT_CALLS=40000 ruby lib/benchmark.rb
 
 info "------------------------------------"
 ok "Running Protobuf 3.15.7 test"
@@ -62,7 +50,12 @@ info "Letting server boot..."
 sleep 1
 
 info "Beginning benchmark..."
+info "10,000 Requests:"
 ruby lib/benchmark.rb
+info "20,000 Requests:"
+CLIENT_CALLS=20000 ruby lib/benchmark.rb
+info "40,000 Requests:"
+CLIENT_CALLS=40000 ruby lib/benchmark.rb
 
 info "------------------------------------"
 ok "Running Protobuf 3.15.8 test"
@@ -79,7 +72,12 @@ info "Letting server boot..."
 sleep 1
 
 info "Beginning benchmark..."
+info "10,000 Requests:"
 ruby lib/benchmark.rb
+info "20,000 Requests:"
+CLIENT_CALLS=20000 ruby lib/benchmark.rb
+info "40,000 Requests:"
+CLIENT_CALLS=40000 ruby lib/benchmark.rb
 
 ok "Benchmarks successful! Shutting down server..."
 kill -9 $server_1_pid
