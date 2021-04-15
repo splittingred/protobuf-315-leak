@@ -64,6 +64,23 @@ sleep 1
 info "Beginning benchmark..."
 ruby lib/benchmark.rb
 
+info "------------------------------------"
+ok "Running Protobuf 3.15.8 test"
+info "------------------------------------"
+export BUNDLE_GEMFILE=Gemfile.3_15_8
+info "Installing gems..."
+bundle update
+
+info "Starting grpc server..."
+ruby lib/server.rb &
+server_1_pid=$!
+
+info "Letting server boot..."
+sleep 1
+
+info "Beginning benchmark..."
+ruby lib/benchmark.rb
+
 ok "Benchmarks successful! Shutting down server..."
 kill -9 $server_1_pid
 ok "Server shutdown, benchmark finished successfully."
