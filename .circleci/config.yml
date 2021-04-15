@@ -95,8 +95,3 @@ workflows:
       - benchmark:
           name: "ruby-2_7-benchmark"
           e: "ruby_2_7"
-  ruby_3_0:
-    jobs:
-      - benchmark:
-          name: "ruby-3_0-benchmark"
-          e: "ruby_3_0"
