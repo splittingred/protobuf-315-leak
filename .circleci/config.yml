@@ -10,15 +10,9 @@ ruby_env: &ruby_env
     RAILS_ENV: test
     RUBY_VERSION: <<parameters.ruby-version>>
   docker:
-    - image: circleci/ruby:<<parameters.ruby-version>>
+    - image: cimg/ruby:<<parameters.ruby-version>>
 
 executors:
-  ruby_2_4:
-    <<: *ruby_env
-    parameters:
-      ruby-version:
-        type: string
-        default: "2.4"
   ruby_2_5:
     <<: *ruby_env
     parameters:
@@ -68,16 +62,10 @@ jobs:
         default: "ruby_2_6"
     steps:
       - pre-setup
-      - install-bundler
       - benchmark
 
 workflows:
   version: 2
-  ruby_2_4:
-    jobs:
-      - benchmark:
-          name: "ruby-2_4-benchmark"
-          e: "ruby_2_4"
   ruby_2_5:
     jobs:
       - benchmark:
