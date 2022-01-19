@@ -59,7 +59,7 @@ jobs:
     parameters:
       e:
         type: executor
-        default: "ruby_2_6"
+        default: "ruby_3_0"
     steps:
       - pre-setup
       - benchmark
@@ -84,7 +84,7 @@ workflows:
   ruby_3_0:
     jobs:
       - benchmark:
-          name: "ruby-2_7-benchmark"
+          name: "ruby-3_0-benchmark"
           e: "ruby_3_0"
   ruby_3_1:
     jobs:
