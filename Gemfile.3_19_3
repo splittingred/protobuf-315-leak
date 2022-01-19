@@ -4,4 +4,4 @@ source 'https://rubygems.org'
 
 gem 'benchmark-memory', '0.1.2'
 gem 'google-protobuf', '~> 3.19.3'
-gem 'grpc', '~> 1.43'
+gem 'grpc', '~> 1.42'
